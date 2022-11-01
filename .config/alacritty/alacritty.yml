@@ -1,0 +1,26 @@
+window:
+  padding:
+    x: 10
+    y: 10
+  #opacity: 0.7
+
+font:
+  normal:
+    family: Source Code Pro
+  bold:
+    family: Source Code Pro
+    style: bold
+  italic:
+    family: Source Code Pro
+    style: italic
+  size: 11
+
+import:
+  #- ~/.config/alacritty/themes/Monokai.dark.yml
+  #- ~/.config/alacritty/themes/Dracula.yml
+  #- ~/.config/alacritty/themes/One-Dark.yml
+  #- ~/.config/alacritty/themes/Gruvbox-Dark.yml
+
+  #- ~/.config/alacritty/themes/Monokai.light.yml
+  #- ~/.config/alacritty/themes/One-Light.yml
+  - ~/.config/alacritty/themes/Gruvbox-Light.yml

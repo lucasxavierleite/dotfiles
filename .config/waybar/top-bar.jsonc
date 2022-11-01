@@ -1,0 +1,145 @@
+{
+    "layer": "top",
+    "height": 30,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "wlr/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    /*"modules-right": ["custom/media", "sway/language", "hyprland/language", "backlight", "pulseaudio", "custom/bluetooth", "network", "battery"],*/
+    "modules-right": ["custom/media", "sway/language", "backlight", "pulseaudio", "custom/bluetooth", "network", "battery"],
+    "sway/workspaces": {
+        "all-outputs": true
+    },
+    "sway/window": {
+        "max-length": 80
+    },
+    "hyprland/window": {
+        "max-length": 80
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "clock": {
+        "interval": 1,
+        "timezone": "America/Sao_Paulo",
+        "locale": "pt_BR.UTF-8",
+        "format": "{:%a,  %d de %b, %H:%M:%S}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "sway/language": {
+        "format": "  {}",
+        "tooltip-format": "{long}",
+        "on-click": "exec swaymsg input type:keyboard xkb_switch_layout next"
+    },
+    "hyprland/language": {
+        "format": "  {}",
+        "tooltip-format": "{long}"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""],
+        //"format-icons": ["", ""],
+        //"format-icons": ["", "", "", "", ""],
+        "on-scroll-up": "exec light -A 10",
+        "on-scroll-down": "exec light -U 10"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        /*"format-alt": "{time} {icon}",*/
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+        //"format-icons": ["", "", "", "", "", "", "", "", "", ""]
+        //"format-icons": ["", "", "", "", ""]
+    },
+    "custom/bluetooth": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "blueman-manager"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        /*"format-wifi": " {icon}{essid} ({signalStrength}%)",*/
+        "format-wifi": "{icon}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        /*"format-icons": ["說", "說", "說"],*/
+        "format-icons": ["直", "直", "直"],
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        /*"format-alt": "{ifname}: {ipaddr}/{cidr}"*/
+        "on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%   {format_source}",
+        "format-bluetooth": "{icon}   {volume}%   {format_source}",
+        "format-bluetooth-muted": " {icon}    {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "  {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            /*"headphone": "",*/
+            /*"hands-free": "",*/
+            /*"headset": "",*/
+            /*"phone": "",*/
+            /*"portable": "",*/
+            /*"car": "",*/
+            "headphone": [" ", " ", " "],
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "custom/media": {
+        "format": "{icon}  {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null",
+        "on-click": "playerctl --player spotify play-pause",
+        "on-scroll-up": "playerctl --player spotify next",
+        "on-scroll-down": "playerctl --player spotify previous"
+    }
+}

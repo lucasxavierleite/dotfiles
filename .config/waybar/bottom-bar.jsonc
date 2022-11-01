@@ -1,0 +1,59 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["idle_inhibitor", "disk", "disk#2", "cpu", "memory", "temperature"],
+    "modules-center": [],
+    "modules-right": ["custom/github", "tray"],
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "disk": {
+        //"format": "  {path}: {}%",
+        "format": " {path} {}%",
+        "path": "/",
+        "on-click": "nautilus /"
+    },
+    "disk#2": {
+        "format": " ~ {}%",
+        "path": "/home/lucas",
+        "on-click": "nautilus /home/lucas"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        //"format": "﬙ {usage}%",
+    },
+    "memory": {
+        //"format": " {}%"
+        //"format": " {}%"
+        "format": " {}%"
+    },
+    "temperature": {
+        "thermal-zone": 7,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "interval": 10,
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        /*"format-icons": ["", "", ""]*/
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/github": {
+        "format": "  {}",
+        //"format": "  {}",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "$HOME/.config/waybar/github.sh",
+        "on-click": "xdg-open https://github.com/notifications"
+    },
+    "tray": {
+        "icon-size": 22,
+        "spacing": 10
+    },
+    "custom/weather": {
+        "exec": "curl 'br.wttr.in/Sao_Carlos?format=1'"
+    }
+}

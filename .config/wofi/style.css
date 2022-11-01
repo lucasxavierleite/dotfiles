@@ -1,0 +1,40 @@
+window, #entry, #input  {
+    border-radius: 4px;
+    border: none;
+}
+
+window, #entry {
+    background: --wofi-color7;
+    color: --wofi-color0;
+}
+
+#outer-box {
+    padding: 10px;
+}
+
+#inner-box {
+    /*margin: 10px;*/
+}
+
+#input {
+    margin-bottom: 10px;
+    min-height: 48px;
+    background: --wofi-color3;
+    color: --wofi-color7;
+    font-weight: bold;
+}
+
+#entry {
+    padding: 10px;
+}
+
+#entry:selected {
+    background-color: --wofi-color3;
+}
+
+#text {
+    margin-left: 10px;
+    font-family: "Roboto Condensed";
+    font-size: 12pt;
+    font-weight: bold;
+}

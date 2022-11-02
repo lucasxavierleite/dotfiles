@@ -2,10 +2,10 @@
 set termguicolors " disable for PyWal
 "colorscheme wal
 "colorscheme monokai_pro
-"colorscheme dracula
+colorscheme dracula
 "colorscheme one
-colorscheme gruvbox
-set background=light
+"colorscheme gruvbox
+set background=dark
 set number
 set laststatus=2
 set colorcolumn=80

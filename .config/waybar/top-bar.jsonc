@@ -67,7 +67,7 @@
         // "device": "acpi_video1",
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["", ""],
+        "format-icons": ["", ""],
         //"format-icons": ["", ""],
         //"format-icons": ["", "", "", "", ""],
         "on-scroll-up": "exec light -A 10",
@@ -96,11 +96,11 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        /*"format-wifi": " {icon}{essid} ({signalStrength}%)",*/
-        "format-wifi": "{icon}",
+        "format-wifi": "",
+        //"format-wifi": "{icon}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         /*"format-icons": ["說", "說", "說"],*/
-        "format-icons": ["直", "直", "直"],
+        //"format-icons": ["直", "直", "直"],
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
@@ -134,7 +134,7 @@
         "max-length": 40,
         "format-icons": {
             "spotify": "",
-            "default": "🎜"
+            "default": " "
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null",

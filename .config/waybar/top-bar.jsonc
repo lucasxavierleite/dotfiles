@@ -56,8 +56,8 @@
     },
     "sway/language": {
         "format": "  {}",
-        "tooltip-format": "{long}",
-        "on-click": "exec swaymsg input type:keyboard xkb_switch_layout next"
+        "tooltip-format": "{long}"
+        //"on-click": "exec swaymsg input type:keyboard xkb_switch_layout next"
     },
     "hyprland/language": {
         "format": "  {}",
@@ -129,7 +129,7 @@
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "custom/media": {
-        "format": "{icon}  {}",
+        "format": "{icon} {}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {

@@ -5,10 +5,10 @@
 /* --- General style --- */
 
 * {
+    min-height: 0;
     border: none;
     font-family: "Roboto Condensed", "Font Awesome 6 Free", "Symbols Nerd Font";
     font-size: 14px;
-    min-height: 0;
 }
 
 window#waybar {
@@ -43,16 +43,13 @@ window#waybar.hidden {
     padding: 0 0px;
     min-width: 30px;
     background-color: transparent;
-    color: #ffffff;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    color: @foreground;
     border-radius: 10px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
     background-color: @color3;
-    color: #3c3c3c;
 }
 
 #workspaces button.focused, #workspaces button.active {
@@ -233,4 +230,27 @@ label:focus {
 tooltip {
     background-color: @foreground;
     color: @background
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#language,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#custom-bluetooth,
+#custom-github,
+#custom-weather,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    color: @foreground;
+    background: @background;
 }

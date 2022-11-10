@@ -27,12 +27,13 @@ set $dmenu wofi --show drun -I
 
 ### Output configuration
 
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * background $wallpaper fill
-client.focused $color0 $background $foreground $color7 $background
-client.background $background
 output eDP-1 resolution 1920x1080 position 0,0
 output HDMI-A-2 resolution 1920x1080 position 1920,0
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+client.focused $foreground $foreground $background $color7 $foreground
+client.background $background
 
 workspace 1 output eDP-1
 workspace 2 output eDP-1
@@ -73,12 +74,20 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# https://major.io/2022/05/24/sway-reload-causes-a-firefox-crash/
+
 input type:touchpad {
     tap enabled
     natural_scroll enabled
 }
 
-input type:keyboard {
+#input type:keyboard {
+    #xkb_layout us,br
+    #xkb_options grp:alt_space_toggle
+    #xkb_numlock enabled
+#}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us,br
     xkb_options grp:alt_space_toggle
     xkb_numlock enabled
@@ -253,15 +262,18 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Screenshot and screen capture
-bindsym $mod+p exec slurp | grim -g - - $(xdg-user-dir PICTURES)/$(date +'Screenshot_%d-%m-%Y_%H-%M-%S.png') | wl-copy
+bindsym Print exec grim - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot_%d-%m-%Y_%H-%M-%S.png') | wl-copy
+bindsym $mod+p exec slurp | grim -g - - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot_%d-%m-%Y_%H-%M-%S.png') | wl-copy
 bindsym $mod+g exec wf-recorder -f file.gif -c gif -g "$(slurp)"
 bindsym $mod+Shift+g exec killall -s SIGINT wf-recorder
 
 ### Appearance
 
-default_border pixel 0
+default_border pixel 2
+default_floating_border normal
 gaps inner 20
 gaps outer 5
+hide_edge_borders smart
 
 font pango:Roboto 11
 
@@ -285,9 +297,27 @@ exec_always {
     waybar --config ~/.config/waybar/bottom-bar.jsonc
 }
 
-include /etc/sway/config.d/*
+include "/etc/sway/config.d/*"
 
-# Generate and set up PyWal colorschemes
+# Generate and setup PyWal colorschemes
+exec_always {
+    ~/.config/wal/scripts/dunst.sh
+    ~/.config/wal/scripts/telegram-palette-gen/telegram-palette-gen -w
+}
 
-exec_always ~/.config/wal/scripts/dunst.sh
-exec_always ~/.config/wal/scripts/telegram-palette-gen/telegram-palette-gen -w
+# Setup cron environment variables
+exec ~/.local/bin/setup_cron_env.sh
+
+### Window rules
+
+for_window {
+    [app_id="pavucontrol"] floating enable
+    [app_id="nm-connection-editor"] floating enable
+    [title="^Picture-in-Picture$"] floating enable; sticky enable; resize set 640 360; border none
+    [title="(?:Open|Save) (?:File|Folder|As)"] floating enable; sticky enable
+    [shell="xwayland"] title_format "%title [XWayland]"
+    [window_role="pop-up"] floating enable
+    [window_role="bubble"] floating enable
+    [window_role="dialog"] floating enable
+    [window_type="dialog"] floating enable
+}

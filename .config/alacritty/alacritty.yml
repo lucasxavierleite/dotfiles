@@ -2,22 +2,30 @@ window:
   padding:
     x: 10
     y: 10
-  #opacity: 0.7
+  opacity: 0.9
 
 font:
   normal:
-    family: Source Code Pro
+    #family: Source Code Pro for Powerline
+    #family: Roboto Mono for Powerline
+    family: Hack
   bold:
-    family: Source Code Pro
+    #family: Source Code Pro for Powerline
+    #family: Roboto Mono for Powerline
+    family: Hack
     style: bold
   italic:
-    family: Source Code Pro
+    #family: Source Code Pro for Powerline
+    #family: Roboto Mono for Powerline
+    family: Hack
     style: italic
   size: 12
 
 import:
+  - ~/.cache/wal/colors-alacritty.yml
+  #- ~/.config/alacritty/themes/Oxide.yml
   #- ~/.config/alacritty/themes/Monokai.dark.yml
-  - ~/.config/alacritty/themes/Dracula.yml
+  #- ~/.config/alacritty/themes/Dracula.yml
   #- ~/.config/alacritty/themes/One-Dark.yml
   #- ~/.config/alacritty/themes/Gruvbox-Dark.yml
 

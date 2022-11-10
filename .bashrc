@@ -3,10 +3,7 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -28,14 +25,14 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x /usr/bin/lesspipe.sh ]] && eval "$(SHELL=/bin/sh lesspipe.sh)"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -59,21 +56,19 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+. ~/.aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
+#if ! shopt -oq posix; then
+  #if [ -f /usr/share/bash-completion/bash_completion ]; then
+    #. /usr/share/bash-completion/bash_completion
+  #elif [ -f /etc/bash_completion ]; then
+    #. /etc/bash_completion
+  #fi
+#fi
 
 #==> pywal <====================================================================
 
@@ -84,7 +79,7 @@ fi
 #(cat ~/.cache/wal/sequences &)
 
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
+#source ~/.cache/wal/colors-tty.sh
 
 #==> PS1 <======================================================================
 
@@ -102,18 +97,16 @@ COLOR_CYAN="\[\033[36m\]"
 COLOR_WHITE="\[\033[37m\]"
 
 # Fancy prompting with Git stuffs
-function parse_git_dirty {
+parse_git_dirty()
+{
     [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "!"
 }
 
-function parse_git_branch {
+parse_git_branch()
+{
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
 }
 
+#export PS1='[\u@\h \W]\$ '
 #export PS1="$BOLD\u@\h$GREEN\w$MAGENTA\$(parse_git_branch)$BLUE\$$CLEAR "
-
 export PS1="$COLOR_BOLD$COLOR_RED\u@\h:$COLOR_WHITE\w$COLOR_CYAN\$(parse_git_branch)$COLOR_CLEAR\$ "
-
-# ==> aliases <=================================================================
-
-alias dotfiles='git --git-dir=$HOME/.config.git --work-tree=$HOME'

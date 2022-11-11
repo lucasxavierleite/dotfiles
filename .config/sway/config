@@ -315,10 +315,11 @@ for_window {
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-editor"] floating enable
     [title="^Picture-in-Picture$"] floating enable; sticky enable; resize set 640 360; border none
-    [title="(?:Open|Save) (?:File|Folder|As)"] floating enable; sticky enable
-    [shell="xwayland"] title_format "%title [XWayland]"
+    [title="(?:Open|Save|Choose) (?:File|Folder|As|an image)"] floating enable; sticky enable
+    [title="(?:Abrir|Salvar|Escolha) (?:Arquivo|Past|Como|uma imagem)"] floating enable; sticky enable
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable
     [window_type="dialog"] floating enable
+    [shell="xwayland"] title_format "%title [XWayland]"
 }

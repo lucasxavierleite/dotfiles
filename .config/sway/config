@@ -303,6 +303,7 @@ include "/etc/sway/config.d/*"
 exec_always {
     ~/.config/wal/scripts/dunst.sh
     ~/.config/wal/scripts/telegram-palette-gen/telegram-palette-gen -w
+    wal-telegram --wal -r
 }
 
 # Setup cron environment variables

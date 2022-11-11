@@ -27,6 +27,9 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/vim-gitbranch'
 
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " Autocomplete and Snippets
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

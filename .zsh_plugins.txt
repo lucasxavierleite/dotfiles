@@ -1,0 +1,10 @@
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+
+tobyjamesthomas/pi
+dikiaap/dotfiles path:.oh-my-zsh/themes
+jackharrisonsherlock/common

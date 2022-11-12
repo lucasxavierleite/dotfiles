@@ -6,18 +6,18 @@ window:
 
 font:
   normal:
+    family: Hack
     #family: Source Code Pro for Powerline
     #family: Roboto Mono for Powerline
-    family: Hack
   bold:
+    family: Hack
     #family: Source Code Pro for Powerline
     #family: Roboto Mono for Powerline
-    family: Hack
     style: bold
   italic:
+    family: Hack
     #family: Source Code Pro for Powerline
     #family: Roboto Mono for Powerline
-    family: Hack
     style: italic
   size: 12
 

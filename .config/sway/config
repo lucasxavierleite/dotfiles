@@ -300,10 +300,12 @@ exec_always {
 include "/etc/sway/config.d/*"
 
 # Generate and setup PyWal colorschemes
+
 exec_always {
     ~/.config/wal/scripts/dunst.sh
     ~/.config/wal/scripts/telegram-palette-gen/telegram-palette-gen -w
     wal-telegram --wal -r
+    pywalfox update
 }
 
 # Setup cron environment variables

@@ -303,8 +303,7 @@ include "/etc/sway/config.d/*"
 
 exec_always {
     ~/.config/wal/scripts/dunst.sh
-    ~/.config/wal/scripts/telegram-palette-gen/telegram-palette-gen -w
-    wal-telegram --wal -r
+    wal-telegram --wal -r 
     pywalfox update
 }
 
@@ -317,8 +316,8 @@ for_window {
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-editor"] floating enable
     [title="^Picture-in-Picture$"] floating enable; sticky enable; resize set 640 360; border none
-    [title="(?:Open|Save|Choose) (?:File|Folder|As|an image)"] floating enable; sticky enable
-    [title="(?:Abrir|Salvar|Escolha) (?:Arquivo|Past|Como|uma imagem)"] floating enable; sticky enable
+    [title="(?:Open|Save|Choose) (?:File|Folder|As|Image|an image)"] floating enable; sticky enable
+    [title="(?:Abrir|Salvar|Escolha) (?:arquivo|pasta|como|imagem|uma imagem)"] floating enable; sticky enable
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable

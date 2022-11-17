@@ -1,4 +1,5 @@
 {
+    "bar_id": "bar-0",
     "layer": "top",
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "wlr/workspaces", "hyprland/window"],
@@ -13,32 +14,6 @@
     },
     "hyprland/window": {
         "max-length": 80
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 2,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -137,7 +112,7 @@
             "default": " "
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null",
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null",
         "on-click": "playerctl --player spotify play-pause",
         "on-scroll-up": "playerctl --player spotify next",
         "on-scroll-down": "playerctl --player spotify previous"

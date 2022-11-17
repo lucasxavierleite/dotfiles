@@ -1,9 +1,11 @@
 {
+    "bar_id": "bar-1",
+    "ipc": true,
     "layer": "top",
     "position": "bottom",
     "modules-left": ["idle_inhibitor", "disk", "disk#2", "cpu", "memory", "temperature"],
     "modules-center": [],
-    "modules-right": ["custom/github", "tray"],
+    "modules-right": ["custom/wallpaper", "custom/github", "tray"],
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -42,18 +44,22 @@
         "format-icons": ["", "", "", "", ""]
     },
     "custom/github": {
-        "format": "  {}",
-        //"format": "  {}",
+        //"format": "  {}",
+        "format": "  {}",
         "return-type": "json",
         "interval": 60,
-        "exec": "$HOME/.config/waybar/github.sh",
+        "exec": "$HOME/.config/waybar/scripts/github.sh",
         "on-click": "xdg-open https://github.com/notifications"
+    },
+    "custom/wallpaper": {
+        "format": "",
+        "on-click": "set_wallpaper.sh"
+    },
+    "custom/weather": {
+        "exec": "curl 'br.wttr.in/Sao_Carlos?format=1'"
     },
     "tray": {
         "icon-size": 22,
         "spacing": 10
-    },
-    "custom/weather": {
-        "exec": "curl 'br.wttr.in/Sao_Carlos?format=1'"
     }
 }

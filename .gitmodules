@@ -1,0 +1,3 @@
+[submodule ".config/waybar/serendipity"]
+	path = .config/waybar/serendipity
+	url = https:github.com/lucasxavierleite/serendipity.git

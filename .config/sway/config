@@ -265,14 +265,16 @@ bindsym $mod+r mode "resize"
 bindsym Print exec grim - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot_%d-%m-%Y_%H-%M-%S.png') | wl-copy
 bindsym $mod+p exec slurp | grim -g - - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +'Screenshot_%d-%m-%Y_%H-%M-%S.png') | wl-copy
 bindsym $mod+g exec wf-recorder -f file.gif -c gif -g "$(slurp)"
+#bindsym $mod+g exec wf-recorder -f file.gif -c gif -F fps=30
+#bindsym $mod+g exec wf-recorder -c libx264rgb
 bindsym $mod+Shift+g exec killall -s SIGINT wf-recorder
 
 ### Appearance
 
 default_border pixel 2
 default_floating_border normal
-gaps inner 20
-gaps outer 5
+gaps inner 5
+gaps outer 15
 hide_edge_borders smart
 
 font pango:Roboto 11
@@ -290,11 +292,16 @@ exec_always {
     #gsettings set $gnome-schema font-name 'Your font name'
 }
 
-exec_always {
-    killall -q waybar
-    while pgrep -x waybar > /dev/null; do sleep 1; done
-    waybar --config ~/.config/waybar/top-bar.jsonc
-    waybar --config ~/.config/waybar/bottom-bar.jsonc
+bar {
+    swaybar_command waybar
+    mode dock
+    hidden_state show
+}
+
+bar bar-1 {
+    swaybar_command true
+    mode dock
+    hidden_state show
 }
 
 include "/etc/sway/config.d/*"
@@ -302,8 +309,8 @@ include "/etc/sway/config.d/*"
 # Generate and setup PyWal colorschemes
 
 exec_always {
-    ~/.config/wal/scripts/dunst.sh
-    wal-telegram --wal -r 
+    pkill -9 dunst
+    wal-telegram --wal
     pywalfox update
 }
 

@@ -10,6 +10,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rakr/vim-one'
 Plug 'Mizux/vim-colorschemes'
 Plug 'tanvirtin/monokai.nvim'
+Plug 'xiyaowong/transparent.nvim'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Airline
@@ -20,6 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
 Plug 'mbbill/undotree'
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -41,7 +43,7 @@ Plug 'honza/vim-snippets'
 Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
 
 " Web development
-"Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 Plug 'rstacruz/vim-node-import'
 "Plug 'rstacruz/vim-closer'
 

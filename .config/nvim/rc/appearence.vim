@@ -1,11 +1,11 @@
 "Appearence
-"set termguicolors " disable for PyWal
-colorscheme wal
+set termguicolors " disable for PyWal
+"colorscheme wal
 "colorscheme monokai_pro
 "colorscheme dracula
 "colorscheme one
-"colorscheme gruvbox
-"set background=dark
+colorscheme gruvbox
+"set background=light
 set number
 set laststatus=2
 set colorcolumn=80

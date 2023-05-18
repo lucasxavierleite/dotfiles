@@ -4,10 +4,14 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle command-not-found
+antigen bundle colored-man-pages
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+antigen bundle Tarrasch/zsh-bd
 
 #antigen theme tobyjamesthomas/pi
 antigen theme dikiaap/dotfiles .oh-my-zsh/themes/oxide

@@ -25,8 +25,11 @@ source ${XDG_CONFIG_HOME:-$HOME/.config}/nnn/nrc.sh
 
 #==> antigen <==================================================================
 
-source ~/.local/bin/antigen
-antigen init ${XDG_CONFIG_HOME:-$HOME/.config}/antigen/antigenrc.sh
+if [[ -n $SWAYSOCK || -n $WAYLAND_DISPLAY || -n $DISPLAY ]]
+then
+    source ~/.local/bin/antigen
+    antigen init ${XDG_CONFIG_HOME:-$HOME/.config}/antigen/antigenrc.sh
+fi
 
 #==> antidote <=================================================================
 

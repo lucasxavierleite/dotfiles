@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Script to change current wallpaper picking a random image from a directory
 # By default, this script uses pywal, but you can easily modify it to use feh,
@@ -27,14 +27,34 @@ printf "\nPicked ${images[$random]}\n\n"
 
 #echo ${images[$random]}
 
-wal -i ${images[$random]}
+pkill -9 swaybg
 
-# To only change the background and not use wal, you can uncomment one of these
-# two lines. Note that while swaymsg only works on sway, swaybg can be used in
-# a lot of Wayland compositors
+case $1 in
+    '--wal')
+        [[ -x /usr/bin/wal ]] || exit
+        wal -i ${images[$random]}
+        ;;
+    # Note that while swaymsg only works on sway, swaybg can be used in a lot
+    # of Wayland compositors
+    '--swaybg')
+        [[ -x /usr/bin/swaybg ]] || exit
+        [[ -x /usr/bin/wal ]] && wal -ni ${images[$random]}
+        nohup swaybg -i ${images[$random]} -m fill &> /dev/null &
+        ;;
+    *)
+        [[ -x /usr/bin/swaymsg ]] || exit
+        [[ -x /usr/bin/wal ]] && wal -ni ${images[$random]}
+        swaymsg output "*" bg ${images[$random]} fill
+        ;;
+esac
 
-#killall swaybg && swaybg -i ${images[$random]} -m fill
-#swaymsg output "*" bg ${images[$random]} fill
+if [[ $2 == '--reload-waybar' ]] ; then
+    #pkill -9 waybar && waybar
+    #ps aux | awk -e '$11 ~ /^waybar*/ {print $2}'
+    #ps aux | awk '$11 = /waybar/ {for(i=11; i <= NF; i++) printf "%s ", $i; print ""}'
+    pkill -USR2 waybar
+fi
 
-# Uncomment this line to test if cron environment variables are set correctly
+
+# Uncomment this line to check if cron environment variables are set correctly
 #env > ~/test_cron.env
